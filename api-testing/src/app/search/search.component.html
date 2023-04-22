@@ -1,0 +1,27 @@
+<body>
+    <form (ngSubmit)="onSubmit()">
+        <label for="location-input">Enter a location:</label>
+        <input type="text" id="location-input" name="location" [(ngModel)]="location">
+        <button type="submit">Search</button>
+    </form>
+
+    <div *ngFor="let restaurant of restaurants; let i = index">
+        <div *ngIf="i === currentRestaurantIndex">
+        <h2>{{ restaurant.name }}</h2>
+        <p>{{ restaurant.address }}</p>
+        <p>{{ restaurant.cuisineType }}</p>
+        <p>{{ restaurant.distance }} miles away</p>
+        </div>
+    </div>
+
+    <button (click)="likeRestaurant(false)">Pass</button>
+    <button (click)="likeRestaurant(true)">Like</button>
+
+    <div *ngFor="let likedRestaurant of likedRestaurants">
+        <h2>{{ likedRestaurant.name }}</h2>
+        <p>{{ likedRestaurant.address }}</p>
+        <p>{{ likedRestaurant.cuisineType }}</p>
+        <p>{{ likedRestaurant.distance }} miles away</p>
+    </div>
+    
+</body>
